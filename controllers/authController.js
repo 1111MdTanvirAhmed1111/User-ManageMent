@@ -4,11 +4,10 @@ const Joi = require('joi');
 const User = require('../models/User');
 const { validateInput } = require('../utils/validateInput');
 
-exports.register = async (req, res) => {
 
 
-  
 
+const register = async (req, res) => {
   try {
     const { username, fathersname, mothersname, class: userClass, email, password, role } = JSON.parse(req.body.Udata);
 
@@ -35,7 +34,7 @@ const hashedPassword = await bcrypt.hash(password, 10);
   }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
   const schema = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
@@ -70,11 +69,7 @@ exports.login = async (req, res) => {
 
 
 
-
-
-
-
-exports.getUserData = async (req, res) => {
+const getUserData = async (req, res) => {
   try {
     // Get the token from the Authorization header
     const token = req.headers.authorization;
@@ -123,3 +118,12 @@ exports.getUserData = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
   };
+
+
+
+
+
+
+
+
+module.exports = {register, login, getUserData}

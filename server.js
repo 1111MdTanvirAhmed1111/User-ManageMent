@@ -21,7 +21,6 @@ app.use(cors())
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
-
 // Configure multer for image upload
 // Serve static files from uploads directory
 app.use('/uploads', express.static('uploads'));

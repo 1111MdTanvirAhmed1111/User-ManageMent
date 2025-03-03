@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
   ProfilePic: {type:String, default: ""},
+  resetToken: { type: String, default: null },  // to store the reset token
+  resetTokenExpiry: { type: Date, default: null }, // to store token expiry time
 });
 
 module.exports = mongoose.model('User', userSchema);
